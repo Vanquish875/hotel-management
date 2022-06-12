@@ -18,7 +18,7 @@ namespace HotelManagementSystem.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("reservations")]
         public async Task<ActionResult<IEnumerable<GetReservation>>> GetReservations()
         {
             try
@@ -34,7 +34,7 @@ namespace HotelManagementSystem.API.Controllers
             }
         }
 
-        [HttpGet("{reservationId}")]
+        [HttpGet("id/{reservationId}")]
         public async Task<ActionResult<GetReservation>> GetReservation(Guid reservationId)
         {
             try
@@ -47,6 +47,22 @@ namespace HotelManagementSystem.API.Controllers
             {
                 _logger.LogError(ex.ToString());
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("date/{date}")]
+        public async Task<ActionResult<GetReservation>> GetReservationByDate(DateTime date)
+        {
+            try
+            {
+                var reservations = await _reservation.GetReservationsByDate(date);
+
+                return Ok(reservations);
+            }
+            catch(Exception ex)
+            {
+                _logger?.LogError(ex.ToString());
+                return BadRequest();
             }
         }
 

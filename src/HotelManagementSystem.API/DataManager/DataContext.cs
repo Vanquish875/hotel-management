@@ -14,7 +14,6 @@ namespace HotelManagementSystem.API.DataManager
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<RoomStatus> RoomsStatus { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
     }
 }

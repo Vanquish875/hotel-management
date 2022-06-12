@@ -1,6 +1,8 @@
 ﻿using HotelManagementSystem.API.Models;
 using HotelManagementSystem.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using HotelManagementSystem.API.DTOs;
+using HotelManagementSystem.API.Models.Search;
 
 namespace HotelManagementSystem.API.Controllers
 {
@@ -16,12 +18,28 @@ namespace HotelManagementSystem.API.Controllers
             _room = room;
         }
 
-        [HttpGet]
+        [HttpGet("rooms")]
         public async Task<ActionResult<IEnumerable<Room>>> Get()
         {
             try
             {
                 var rooms = await _room.GetAllRooms();
+
+                return Ok(rooms);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("rooms/search/{roomSearch}")]
+        public async Task<ActionResult<IEnumerable<GetRoom>>> GetRoomBySearchCriteria(RoomSearch roomSearch)
+        {
+            try
+            {
+                var rooms = await _room.GetRoomsAvailableBySearchCriteria(roomSearch);
 
                 return Ok(rooms);
             }

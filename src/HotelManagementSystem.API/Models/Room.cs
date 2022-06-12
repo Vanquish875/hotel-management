@@ -6,7 +6,6 @@ namespace HotelManagementSystem.API.Models
     {
         public Guid RoomId { get; set; } = new Guid();
         public Guid RoomTypeId { get; set; }
-        public Guid RoomStatusId { get; set; }
         public int RoomNumber { get; set; }
         [Precision(19, 4)]
         public decimal PricePerNight { get; set; }

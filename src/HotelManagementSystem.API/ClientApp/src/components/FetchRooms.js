@@ -5,7 +5,7 @@ export const FetchRooms = () =>  {
   const isComponentMounted = useRef(true);
 
   const { data, loading, error } = useFetch(
-    "room",
+    "room/rooms",
     isComponentMounted,
     []
   );

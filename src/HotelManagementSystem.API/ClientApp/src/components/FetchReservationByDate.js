@@ -1,22 +1,21 @@
 import React, { useRef } from 'react'
 import { useFetch } from './useFetch'
-import { Link } from 'react-router-dom';
 
- export const FetchReservations = () => {
-  const isComponentMounted = useRef(true);
+export const FetchReservationByDate = (props) => {
+    const isComponentMounted = useRef(true);
 
-  const { data, loading, error } = useFetch(
-    "reservation/reservations",
-    isComponentMounted,
-    []
-  );
+    const { data, loading, error } = useFetch(
+        "reservation/date/" + props.date,
+        isComponentMounted,
+        []
+    );
   
-  if (loading) return <h1>Loading...</h1>;
+    if (loading) return <h1>Loading...</h1>;
 
-  if (error) console.log(error);
-
-  return (
-    <table className='table table-striped' aria-labelledby="tabelLabel">
+    if (error) console.log(error);
+  
+    return (
+        <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
             <th>Guest Name</th>
@@ -31,7 +30,7 @@ import { Link } from 'react-router-dom';
         <tbody>
           {data?.map(reservation =>
             <tr key={reservation?.reservationId}>
-              <Link to={{pathname:"/fetch-reservation", state: {id: reservation.reservationId }}}><td>{reservation?.guestName}</td> </Link>
+              <td>{reservation?.guestName}</td>
               <td>{reservation?.roomNumber}</td>
               <td>{reservation?.checkInDate}</td>
               <td>{reservation?.checkOutDate}</td>

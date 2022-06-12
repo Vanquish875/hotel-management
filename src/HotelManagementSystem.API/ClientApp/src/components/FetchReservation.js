@@ -1,11 +1,14 @@
 import React, { useRef } from 'react'
 import { useFetch } from './useFetch'
+import { useLocation } from 'react-router-dom';
 
  export const FetchReservation = () => {
   const isComponentMounted = useRef(true);
+  const location = useLocation();
+  const id = location.state?.id;
 
   const { data, loading, error } = useFetch(
-    "reservation/451FBE59-8EDF-465F-6C97-08DA2FBE6A98",
+    "reservation/id/" + id,
     isComponentMounted,
     []
   );

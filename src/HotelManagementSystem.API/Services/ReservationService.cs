@@ -59,6 +59,30 @@ namespace HotelManagementSystem.API.Services
             return await reservation.FirstAsync();
         }
 
+        public async Task<IEnumerable<GetReservation>> GetReservationsByDate(DateTime date)
+        {
+            var reservatons = (from res in _context.Reservations
+                               join guest in _context.Guests on res.GuestId equals guest.GuestId
+                               join room in _context.Rooms on res.RoomId equals room.RoomId
+                               join payment in _context.Payments on res.ReservationId equals payment.ReservationId
+                               where res.CheckInDate.Date == date.Date
+                               select new GetReservation
+                               {
+                                   ReservationId = res.ReservationId,
+                                   GuestName = $"{guest.FirstName} {guest.LastName}",
+                                   RoomNumber = room.RoomNumber,
+                                   CheckInDate = res.GetCheckinDateTime(),
+                                   CheckOutDate = res.GetCheckOutDateTime(),
+                                   NumberOfNights = res.GetTotalAmountOfDays(),
+                                   NumberOfGuests = res.NumberOfAdults + res.NumberOfChildren,
+                                   TotalAmount = payment.Amount
+                               }).AsNoTracking();
+
+            ArgumentNullException.ThrowIfNull(reservatons, "No reservations for this Date:");
+
+            return await reservatons.ToListAsync();
+        }
+
         public Guid CreateReservation(Reservation reservation)
         {
             ArgumentNullException.ThrowIfNull(reservation, nameof(reservation));
