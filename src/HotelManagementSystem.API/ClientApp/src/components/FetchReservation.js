@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { useFetch } from './useFetch'
+import React, { useRef } from 'react';
+import { useFetch } from './useFetch';
 import { useLocation } from 'react-router-dom';
 
  export const FetchReservation = () => {
@@ -26,19 +26,23 @@ import { useLocation } from 'react-router-dom';
             <th>Check-in Date</th>
             <th>Check-out Date</th>
             <th>Number Of Nights</th>
-            <th>Total Amount</th>
             <th>Number of Guests</th>
+            <th>Total Amount</th>
+            <th>Amount Paid</th>
+            <th>Total Remaining</th>
           </tr>
         </thead>
         <tbody>
-            <tr key={data?.reservationId}>
-              <td>{data?.guestName}</td>
-              <td>{data?.roomNumber}</td>
-              <td>{data?.checkInDate}</td>
-              <td>{data?.checkOutDate}</td>
-              <td>{data?.numberOfNights}</td>
-              <td>{data?.totalAmount}</td>
-              <td>{data?.numberOfGuests}</td>
+            <tr key={data.reservationId}>
+              <td>{data.guestName}</td>
+              <td>{data.roomNumber}</td>
+              <td>{data.checkInDate}</td>
+              <td>{data.checkOutDate}</td>
+              <td>{data.numberOfNights}</td>
+              <td>{data.numberOfGuests}</td>
+              <td>{data.totalAmount}</td>
+              <td>{data.amountPaid}</td>
+              <td>{data.totalRemaining}</td>
             </tr>
         </tbody>
       </table>

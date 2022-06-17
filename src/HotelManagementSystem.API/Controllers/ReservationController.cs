@@ -23,7 +23,7 @@ namespace HotelManagementSystem.API.Controllers
         {
             try
             {
-                var reservations = await _reservation.GetAllReservations();
+                var reservations = await _reservation.GetAllCurrentReservations();
 
                 return Ok(reservations);
             }

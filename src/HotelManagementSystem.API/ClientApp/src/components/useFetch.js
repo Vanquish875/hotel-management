@@ -5,12 +5,6 @@ export const useFetch = (url, ref, initialValue, method) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(initialValue)
-};
-
   useEffect(() => {
     if (ref.current) {
       (async () => {

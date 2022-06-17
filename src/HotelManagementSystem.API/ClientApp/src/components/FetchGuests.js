@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { useFetch } from './useFetch'
+import React, { useRef } from 'react';
+import { useFetch } from './useFetch';
 
 export const FetchGuests = () => {
   const isComponentMounted = useRef(true);

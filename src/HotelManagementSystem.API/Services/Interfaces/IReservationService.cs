@@ -7,7 +7,9 @@ namespace HotelManagementSystem.API.Services.Interfaces
     {
         Guid CreateReservation(Reservation reservation);
         void DeleteReservation(Reservation reservation);
-        Task<IEnumerable<GetReservation>> GetAllReservations();
+        Task<IEnumerable<GetReservation>> GetAllCurrentReservations();
+        Task<IEnumerable<GetReservation>> GetAllUpcomingReservations();
+        Task<IEnumerable<GetReservation>> GetAllPastReservations();
         Task<GetReservation> GetReservationById(Guid reservationId);
         Task<IEnumerable<GetReservation>> GetReservationsByDate(DateTime date);
         void UpdateReservation(Reservation reservation);

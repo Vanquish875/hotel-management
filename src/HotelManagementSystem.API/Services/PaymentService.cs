@@ -22,12 +22,12 @@ namespace HotelManagementSystem.API.Services
 
         public async Task<IEnumerable<Payment>> GetPaymentsByReservationId(Guid reservationId)
         {
-            var payments = _context.Payments
-                .Where(i => i.ReservationId == reservationId);
+            var payments = await _context.Payments
+                .Where(i => i.ReservationId == reservationId).ToListAsync();
 
-            ArgumentNullException.ThrowIfNull(payments);
+            ArgumentNullException.ThrowIfNull(payments, nameof(payments));
 
-            return payments.ToList();
+            return payments;
         }
 
         public async Task<Payment> GetPaymentById(Guid paymentId)

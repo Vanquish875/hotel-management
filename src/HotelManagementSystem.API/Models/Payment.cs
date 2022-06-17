@@ -9,7 +9,6 @@ namespace HotelManagementSystem.API.Models
         public Guid? ReservationId { get; set; }
         [Precision(19,4)]
         public decimal Amount { get; set; }
-        public bool Paid { get; set; }
         public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
     }
 }

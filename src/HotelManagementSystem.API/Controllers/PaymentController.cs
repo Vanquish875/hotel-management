@@ -9,15 +9,15 @@ namespace HotelManagementSystem.API.Controllers
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentService _payment;
-        private readonly ILogger _logger;
+        private readonly ILogger<PaymentController> _logger;
 
-        public PaymentController(IPaymentService payment, ILogger logger)
+        public PaymentController(ILogger<PaymentController> logger, IPaymentService payment)
         {
             _payment = payment;
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("payments")]
         public async Task<ActionResult<IEnumerable<Payment>>> Get()
         {
             try
@@ -33,7 +33,7 @@ namespace HotelManagementSystem.API.Controllers
             }
         }
 
-        [HttpGet("{reservationId}")]
+        [HttpGet("id/{reservationId}")]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPaymentByReservationId(Guid reservationId)
         {
             try
@@ -44,7 +44,7 @@ namespace HotelManagementSystem.API.Controllers
             }
             catch(Exception ex)
             {
-                _logger?.LogError(ex.ToString());
+                _logger.LogError(ex.ToString());
                 return BadRequest(ex.Message);
             }
         }

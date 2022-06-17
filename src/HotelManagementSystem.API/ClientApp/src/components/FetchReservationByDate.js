@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { useFetch } from './useFetch'
+import React, { useRef } from 'react';
+import { useFetch } from './useFetch';
 
 export const FetchReservationByDate = (props) => {
     const isComponentMounted = useRef(true);
@@ -23,20 +23,24 @@ export const FetchReservationByDate = (props) => {
             <th>Check-in Date</th>
             <th>Check-out Date</th>
             <th>Number Of Nights</th>
+            <th>Number Of Guests</th>
             <th>Total Amount</th>
-            <th>Number of Guests</th>
+            <th>Amount Paid</th>
+            <th>Total Remaining</th>
           </tr>
         </thead>
         <tbody>
           {data?.map(reservation =>
-            <tr key={reservation?.reservationId}>
-              <td>{reservation?.guestName}</td>
-              <td>{reservation?.roomNumber}</td>
-              <td>{reservation?.checkInDate}</td>
-              <td>{reservation?.checkOutDate}</td>
-              <td>{reservation?.numberOfNights}</td>
-              <td>{reservation?.totalAmount}</td>
-              <td>{reservation?.numberOfGuests}</td>
+            <tr key={reservation.reservationId}>
+              <td>{reservation.guestName}</td>
+              <td>{reservation.roomNumber}</td>
+              <td>{reservation.checkInDate}</td>
+              <td>{reservation.checkOutDate}</td>
+              <td>{reservation.numberOfNights}</td>
+              <td>{reservation.numberOfGuests}</td>
+              <td>{reservation.totalAmount}</td>
+              <td>{reservation.amountPaid}</td>
+              <td>{reservation.totalRemaining}</td>
             </tr>
           )}
         </tbody>

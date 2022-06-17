@@ -33,5 +33,7 @@
 
             return CheckOutDate.Date + checkOutTS;
         }
+
+        public decimal GetTotalAmountPaid() => Payments.Sum(p => p.Amount);
     }
 }

@@ -8,6 +8,7 @@ const context =  [
     "/room",
     "/reservation",
     "/guest",
+    "/payment",
 ];
 
 module.exports = function(app) {
