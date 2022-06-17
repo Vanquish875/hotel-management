@@ -28,20 +28,25 @@ import { Link } from 'react-router-dom';
             <th>Total Amount</th>
             <th>Amount Paid</th>
             <th>Total Remaining</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {data?.map(reservation =>
             <tr key={reservation.reservationId}>
-              <Link to={{pathname:"/fetch-reservation", state: {id: reservation.reservationId }}}><td>{reservation.guestName}</td></Link>
+              <td>{reservation.guestName}</td>
+              <td>{reservation.guestName}</td>
               <td>{reservation.roomNumber}</td>
               <td>{reservation.checkInDate}</td>
               <td>{reservation.checkOutDate}</td>
               <td>{reservation.numberOfNights}</td>
               <td>{reservation.numberOfGuests}</td>
               <td>{reservation.totalAmount}</td>
-              <Link to ={{pathname: "/fetch-payment", state: {id: reservation.reservationId }}}><td>{reservation.amountPaid}</td></Link>
+              <td>{reservation.amountPaid}</td>
               <td>{reservation.totalRemaining}</td>
+              <td><Link to={{pathname:"/fetch-reservation", state: {id: reservation.reservationId }}} className="btn btn-primary">Reservation</Link></td>
+              <td><Link to={{pathname:"/fetch-payment", state: {id: reservation.reservationId }}} className="btn btn-primary">Payment</Link></td>
             </tr>
           )}
         </tbody>
