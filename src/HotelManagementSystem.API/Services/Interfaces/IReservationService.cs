@@ -12,6 +12,6 @@ namespace HotelManagementSystem.API.Services.Interfaces
         Task<IEnumerable<GetReservation>> GetAllPastReservations();
         Task<GetReservation> GetReservationById(Guid reservationId);
         Task<IEnumerable<GetReservation>> GetReservationsByDate(DateTime date);
-        void UpdateReservation(Reservation reservation);
+        Guid UpdateReservation(Reservation reservation);
     }
 }

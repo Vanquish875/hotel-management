@@ -10,6 +10,7 @@ namespace HotelManagementSystem.API.Models
         [Precision(19, 4)]
         public decimal PricePerNight { get; set; }
         public int MaxPersons { get; set; }
+        public string ImagePath { get; set; } = string.Empty;
 
         public ICollection<Reservation>? Reservations { get; set; } = null!;
     }

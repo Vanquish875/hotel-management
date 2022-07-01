@@ -5,7 +5,7 @@ export const FetchGuests = () => {
   const isComponentMounted = useRef(true);
 
   const { data, loading, error } = useFetch(
-    "guest",
+    "guest/guests",
     isComponentMounted,
     []
   );
@@ -25,8 +25,8 @@ export const FetchGuests = () => {
             <th>Email</th>
             <th>Phone</th>
             <th>City</th>
+            <th>State</th>
             <th>Country</th>
-            <th>DriverLicense</th>
           </tr>
         </thead>
         <tbody>
@@ -39,8 +39,8 @@ export const FetchGuests = () => {
               <td>{guest.email}</td>
               <td>{guest.phone}</td>
               <td>{guest.city}</td>
+              <td>{guest.state}</td>
               <td>{guest.country}</td>
-              <td>{guest.driverLicense}</td>
             </tr>
           )}
         </tbody>

@@ -81,5 +81,21 @@ namespace HotelManagementSystem.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("id/edit")]
+        public ActionResult<Guid> Put(Reservation reservation)
+        {
+            try
+            {
+                var id = _reservation.UpdateReservation(reservation);
+
+                return Ok(id);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

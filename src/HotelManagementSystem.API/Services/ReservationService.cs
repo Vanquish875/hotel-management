@@ -228,12 +228,14 @@ namespace HotelManagementSystem.API.Services
             return reservation.ReservationId;
         }
 
-        public void UpdateReservation(Reservation reservation)
+        public Guid UpdateReservation(Reservation reservation)
         {
             ArgumentNullException.ThrowIfNull(reservation, nameof(reservation));
 
             _context.Reservations.Update(reservation);
             _context.SaveChanges();
+
+            return reservation.ReservationId;
         }
 
         public void DeleteReservation(Reservation reservation)

@@ -18,7 +18,7 @@ namespace HotelManagementSystem.API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("guests")]
         public async Task<ActionResult<IEnumerable<Guest>>> Get()
         {
             try

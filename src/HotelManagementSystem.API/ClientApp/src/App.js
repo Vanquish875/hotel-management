@@ -9,8 +9,10 @@ import { ReservationForm } from './components/ReservationForm';
 import { GuestForm } from './components/GuestForm';
 import { FetchReservation } from './components/FetchReservation';
 import { FetchPayment } from './components/FetchPayment';
-
+import { PrintReceipt } from './components/PrintReceipt';
+import { EditReservation } from './components/EditReservation';
 import './custom.css'
+
 
 export default class App extends Component {
   static displayName = App.name;
@@ -26,6 +28,8 @@ export default class App extends Component {
         <Route path='/guest-form' component={GuestForm} />
         <Route path='/fetch-reservation' component={FetchReservation} />
         <Route path='/fetch-payment' component={FetchPayment} />
+        <Route path='/receipt' component={PrintReceipt} />
+        <Route path='/edit-reservation' component={EditReservation} />
       </Layout>
     );
   }

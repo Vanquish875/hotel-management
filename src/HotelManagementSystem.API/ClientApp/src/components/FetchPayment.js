@@ -37,6 +37,9 @@ export const FetchPayment = () => {
           </tr>
         )}
       </tbody>
+      <div>
+        <button className="btn btn-primary">Print</button>
+      </div>
     </table>
   )
 }

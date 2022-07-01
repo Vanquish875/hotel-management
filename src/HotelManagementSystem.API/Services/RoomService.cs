@@ -15,10 +15,19 @@ namespace HotelManagementSystem.API.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Room>> GetAllRooms()
+        public async Task<IEnumerable<GetRoom>> GetAllRooms()
         {
-            var rooms = _context.Rooms
-                .OrderBy(o => o.RoomNumber);
+            var rooms = (from room in _context.Rooms
+                         join roomType in _context.RoomTypes on room.RoomTypeId equals roomType.RoomTypeId
+                         select new GetRoom
+                         {
+                             RoomId = room.RoomId,
+                             RoomNumber = room.RoomNumber,
+                             RoomType = roomType.RoomTypeName,
+                             PricePerNight = room.PricePerNight,
+                             MaxPersons = room.MaxPersons,
+                             ImagePath = room.ImagePath
+                         }).AsNoTracking();
 
             return await rooms.ToListAsync();
         }

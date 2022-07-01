@@ -19,16 +19,20 @@ export const FetchRooms = () =>  {
     <thead>
       <tr>
         <th>Room Number</th>
+        <th>Room Type</th>
         <th>Price</th>
         <th>Max Persons</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       {data?.map(room =>
         <tr key={room.roomId}>
           <td>{room.roomNumber}</td>
+          <td>{room.roomType}</td>
           <td>{room.pricePerNight}</td>
           <td>{room.maxPersons}</td>
+          <img src={room.imagePath}></img>
         </tr>
       )}
     </tbody>

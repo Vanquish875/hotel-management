@@ -8,7 +8,7 @@ namespace HotelManagementSystem.API.Services.Interfaces
     {
         void CreateRoom(Room room);
         void DeleteRoom(Room room);
-        Task<IEnumerable<Room>> GetAllRooms();
+        Task<IEnumerable<GetRoom>> GetAllRooms();
         Task<Room> GetRoomById(Guid roomId);
         Task<IEnumerable<GetRoom>> GetRoomsAvailableBySearchCriteria(RoomSearch roomSearch);
         void UpdateRoom(Room room);

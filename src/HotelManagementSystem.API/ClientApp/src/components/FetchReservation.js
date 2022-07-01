@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useFetch } from './useFetch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
  export const FetchReservation = () => {
   const isComponentMounted = useRef(true);
@@ -30,6 +30,9 @@ import { useLocation } from 'react-router-dom';
             <th>Total Amount</th>
             <th>Amount Paid</th>
             <th>Total Remaining</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +46,9 @@ import { useLocation } from 'react-router-dom';
               <td>{data.totalAmount}</td>
               <td>{data.amountPaid}</td>
               <td>{data.totalRemaining}</td>
+              <td><Link to={{pathname:"/edit-reservation", state: {id: data.reservationId }}} className="btn btn-primary">Edit</Link></td>
+              <td><button className="btn btn-primary">Delete</button></td>
+              <td><button className="btn btn-primary">Print</button></td>
             </tr>
         </tbody>
       </table>

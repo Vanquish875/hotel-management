@@ -23,8 +23,7 @@ namespace HotelManagementSystem.API.Models
         public string State { get; set; } = string.Empty;
         [Column(TypeName = "varchar(250)")]
         public string Country { get; set; } = string.Empty;
-        [Column(TypeName = "varchar(100)")]
-        public DateTime DateCreated { get; set;  } = DateTime.UtcNow;
+        public DateTime DateCreated { get; set;  } = DateTime.Now;
         public ICollection<Reservation>? Reservations { get; set; }
         public ICollection<Payment>? Payments { get; set; }
     }

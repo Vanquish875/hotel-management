@@ -7,5 +7,6 @@
         public string RoomType { get; set; } = string.Empty;
         public decimal PricePerNight { get; set; }
         public int MaxPersons { get; set; }
+        public string ImagePath { get; set; } = string.Empty;
     }
 }
